@@ -86,7 +86,11 @@ All automation scripts and documentation for this task are available in the `/in
 ### Documentation
 - **README.md** - Complete guide with step-by-step instructions and troubleshooting
 - **naming-conventions.md** - Comprehensive naming and tagging strategy guide
+- **GITHUB_ACTIONS_EXAMPLES.md** - GitHub Actions workflow examples for CI/CD
+- **QUICK_REFERENCE.md** - Quick reference card for common Azure commands
 - **network-topology.md** - Generated network architecture documentation (after running setup)
+- **rbac-documentation.md** - Generated RBAC documentation (after running setup-rbac.sh)
+- **service-principal-{env}.md** - Generated service principal docs (after running create-service-principal.sh)
 
 ### Quick Start
 ```bash
