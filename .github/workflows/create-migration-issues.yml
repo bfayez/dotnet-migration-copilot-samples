@@ -1,0 +1,56 @@
+name: Create Migration Issues
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: 'Type "create-issues" to confirm'
+        required: true
+        default: ''
+
+jobs:
+  create-issues:
+    runs-on: ubuntu-latest
+    if: github.event.inputs.confirm == 'create-issues'
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+    
+    - name: Generate issue data
+      run: python3 create-issues.py
+    
+    - name: Install GitHub CLI
+      run: |
+        type -p curl >/dev/null || (sudo apt update && sudo apt install curl -y)
+        curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
+        sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg
+        echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+        sudo apt update
+        sudo apt install gh -y
+    
+    - name: Create issues
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: |
+        chmod +x create-issues.sh
+        ./create-issues.sh
+    
+    - name: Summary
+      run: |
+        echo "## Issues Created Successfully! 🎉" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "Created 47 migration issues across 6 phases:" >> $GITHUB_STEP_SUMMARY
+        echo "- Phase 0: Assessment and Planning (6 issues)" >> $GITHUB_STEP_SUMMARY
+        echo "- Phase 1: Foundation - Core Migration (13 issues)" >> $GITHUB_STEP_SUMMARY
+        echo "- Phase 2: Azure Services Integration (12 issues)" >> $GITHUB_STEP_SUMMARY
+        echo "- Phase 3: Testing and Quality (7 issues)" >> $GITHUB_STEP_SUMMARY
+        echo "- Phase 4: Deployment and Cutover (5 issues)" >> $GITHUB_STEP_SUMMARY
+        echo "- Post-Migration: Enhancements (4 issues)" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "View all issues: [Issues](https://github.com/${{ github.repository }}/issues)" >> $GITHUB_STEP_SUMMARY

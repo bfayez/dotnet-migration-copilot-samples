@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Migration Plan Documentation
+    url: https://github.com/bfayez/dotnet-migration-copilot-samples/blob/main/MigrationWithModernization.md
+    about: View the complete migration plan and strategy
+  - name: Task Files
+    url: https://github.com/bfayez/dotnet-migration-copilot-samples/tree/main/tasks
+    about: Browse all migration task files organized by phase
+  - name: Issue Creation Guide
+    url: https://github.com/bfayez/dotnet-migration-copilot-samples/blob/main/ISSUE_CREATION_GUIDE.md
+    about: Learn how to create migration issues from task files
