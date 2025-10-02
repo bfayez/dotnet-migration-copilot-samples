@@ -19,21 +19,23 @@ This repository includes a comprehensive migration plan with **47 detailed tasks
 
 To track your migration progress, convert the task files into GitHub Issues:
 
-#### Quick Start
+#### Quick Start (Recommended)
 ```bash
-# 1. Authenticate with GitHub CLI
-gh auth login
-
-# 2. Create labels (run once)
-./create-labels.sh
-
-# 3. Create all 47 issues
-./create-issues.sh
+# One-command setup - creates labels and all 47 issues
+./setup-issues.sh
 ```
 
+This interactive script will:
+- ✅ Check your GitHub CLI authentication
+- ✅ Create all necessary labels
+- ✅ Create all 47 issues with proper formatting
+- ✅ Provide next steps
+
 #### Alternative Methods
+- **Manual Steps**: Run `./create-labels.sh` then `./create-issues.sh`
 - **GitHub Actions**: Use the "Create Migration Issues" workflow in the Actions tab
-- **Manual**: Follow the [Issue Creation Guide](./ISSUE_CREATION_GUIDE.md)
+- **Custom**: Follow the [Issue Creation Guide](./ISSUE_CREATION_GUIDE.md)
+- **Quick Reference**: See [QUICK_START.md](./QUICK_START.md)
 
 ### 📚 Documentation
 
