@@ -1,0 +1,23 @@
+# Azure Setup - Sensitive Files
+# These files contain credentials and should never be committed to version control
+
+# Service Principal Credentials
+sp-credentials-*.json
+*.env
+.env.*
+
+# Subscription and Account Details (may contain sensitive info)
+subscription-details.txt
+
+# Role Assignment Exports (may contain user info)
+rbac-assignments-*.json
+
+# Generated during setup - can be regenerated
+budget-config.json
+governance-policies.txt
+
+# Logs and temporary files
+*.log
+*.tmp
+.DS_Store
+Thumbs.db

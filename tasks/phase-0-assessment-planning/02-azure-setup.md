@@ -73,9 +73,49 @@ Set up the Azure subscription, resource groups, and initial configuration for th
 ## Estimated Effort
 2 days
 
+## Implementation Resources
+
+All automation scripts and documentation for this task are available in the `/infrastructure/azure-setup/` directory:
+
+### Scripts
+- **setup-azure-subscription.sh** - Bash script for Azure subscription and resource group setup
+- **setup-azure-subscription.ps1** - PowerShell script (alternative for Windows users)
+- **setup-rbac.sh** - Configure Role-Based Access Control for team members
+- **create-service-principal.sh** - Create service principal for CI/CD automation
+
+### Documentation
+- **README.md** - Complete guide with step-by-step instructions and troubleshooting
+- **naming-conventions.md** - Comprehensive naming and tagging strategy guide
+- **GITHUB_ACTIONS_EXAMPLES.md** - GitHub Actions workflow examples for CI/CD
+- **QUICK_REFERENCE.md** - Quick reference card for common Azure commands
+- **network-topology.md** - Generated network architecture documentation (after running setup)
+- **rbac-documentation.md** - Generated RBAC documentation (after running setup-rbac.sh)
+- **service-principal-{env}.md** - Generated service principal docs (after running create-service-principal.sh)
+
+### Quick Start
+```bash
+cd infrastructure/azure-setup
+
+# 1. Login to Azure
+az login
+
+# 2. Set up subscription and resource groups
+./setup-azure-subscription.sh dev
+
+# 3. Configure RBAC roles
+./setup-rbac.sh dev
+
+# 4. Create service principal for CI/CD
+./create-service-principal.sh dev
+```
+
+For detailed instructions, see `/infrastructure/azure-setup/README.md`
+
 ## Notes
 - Follow Azure naming conventions: https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging
 - Consider using Azure landing zones for enterprise deployments
 - Set up separate resource groups for shared resources (networking, monitoring)
 - Use least-privilege principle for RBAC assignments
 - Document all credentials securely (use Azure Key Vault or password manager)
+- All scripts are idempotent and can be re-run safely
+- Generated credentials files are automatically excluded from git via .gitignore
